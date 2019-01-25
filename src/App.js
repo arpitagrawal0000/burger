@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-       <Screen/>
+       <Screen history={this.props.history}/>
       </div>
     );
   }

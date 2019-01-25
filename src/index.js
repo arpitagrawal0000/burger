@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducer from '../src/Store/reducer';
 import Confirm from './screens/confirm';
-import { BrowserRouter , Route } from 'react-router-dom'
+import { Route, BrowserRouter } from 'react-router-dom';
 
 // const Routing = (
 //     <BrowserRouter>
@@ -39,19 +39,18 @@ import { BrowserRouter , Route } from 'react-router-dom'
 //   )
 
 
-const store = createStore(reducer, applyMiddleware(thunk));
-
+const store = applyMiddleware(thunk)(createStore)(reducer);
 
 ReactDOM.render(
         <Provider store= {store}> 
-        <BrowserRouter>
-        <div>
-            <Route exact path="/" component={App} />
-            <Route path="/order" component={Confirm} /> 
-        </div>
-      </BrowserRouter>
+            <BrowserRouter >
+                <div>
+                    <Route exact path="/" component={App} />
+                    <Route path="/order" component={Confirm} /> 
+                </div>
+            </BrowserRouter>
 
-</Provider> , document.getElementById('root'));
+        </Provider> , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
