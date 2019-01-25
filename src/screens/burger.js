@@ -66,12 +66,12 @@ class Screen extends Component {
     };
 };
 
-const mapStateToProps = (state) => {
-    console.log(state, "state");
-    return{
-        ingredients: state.ingredients
-    }
-}
+// const mapStateToProps = (state) => {
+//     console.log(state.ingredient, "state");
+//     return{
+//         ingredient: state.ingredient
+//     };
+// };
 
-export default connect (mapStateToProps, mapDispatchToProps) (Screen);
+export default connect (null, mapDispatchToProps) (Screen);
 

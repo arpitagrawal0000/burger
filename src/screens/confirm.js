@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
 
 class Confirm extends Component {
     render() {
@@ -10,7 +11,7 @@ class Confirm extends Component {
             <h2>YOUR ORDER</h2>
                 <br/>
                 <h4>A delicious burger with following ingredients</h4>
-                <h3>salad: {alert ("new page")} </h3>
+                <h3>salad: {alert (this.props)} </h3>
                 <br/>
                 {/* <h3>bacon: {this.props.reducer.ingredients.bacon} </h3> */}
                 {/* <br/> */}
@@ -22,4 +23,10 @@ class Confirm extends Component {
 
 }
 
-export default Confirm;
+const mapStateToProps = (state) => {
+    console.log(state, "state");
+    return{
+        ingredient: state    };
+};
+
+export default connect (mapStateToProps, null) (Confirm);
