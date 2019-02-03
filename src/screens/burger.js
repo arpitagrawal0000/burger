@@ -15,7 +15,7 @@ class Screen extends Component {
     
 
     handleSumbit = (e, history) => {
-        e.preventDefault();
+    
        this.props.add_ingredients(this.state, history)    
     }
 
@@ -32,12 +32,11 @@ class Screen extends Component {
     }
 
 
-    handleShowIngredients = (e) => {
-        console.log(this.state);
-    }
+    
     render() {
        return (
            <div>
+               <center>
            <form>
                 <h3>Hey!! Order Your Burger Here...</h3>
                 <label >Cheese  </label>
@@ -51,11 +50,9 @@ class Screen extends Component {
                   <br/>
                   <br/>
                   <input type="submit" value="Submit" onClick={(e) => this.handleSumbit(e, this.props.history)}/>
-                  {/* <button onClick={(e) => this.handleShowIngredients(e)} >
-                              <Link to="/order">Order</Link>  </button>
-                               */}
+                  
             </form>
-
+            </center>
            </div>
        )
     }

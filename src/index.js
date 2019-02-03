@@ -8,36 +8,11 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducer from '../src/Store/reducer';
 import Confirm from './screens/confirm';
-import { Route, BrowserRouter } from 'react-router-dom';
-
-// const Routing = (
-//     <BrowserRouter>
-        
-//     </BrowserRouter> 
-// );
- 
-// class route extends Component {
-//     render () {
-//         return (
-//             <div> 
-//                 <Route path="/" component= {App} />
-//                 <Route path ="/order" component= {Confirm} />
-//             </div>
-//         )
-//     }
-// }
-
-// const Root = ({ store }) => (
-//     <Provider store={store}>
-//       <Router>
-         
-//         <Route path="/" component={App} />
-//         <Route path="/order" component={Confirm} />
-
-//       </Router>
-//     </Provider>
-//   )
-
+import { Route, BrowserRouter} from 'react-router-dom';
+import Checkout from './screens/checkout';
+import Completed from './screens/completed';
+//import Orders from './screens/orders';
+import NewOrders from './screens/new';
 
 const store = applyMiddleware(thunk)(createStore)(reducer);
 
@@ -47,6 +22,9 @@ ReactDOM.render(
                 <div>
                     <Route exact path="/" component={App} />
                     <Route path="/order" component={Confirm} /> 
+                    <Route path="/checkout" component={Checkout}/>
+                    <Route path="/completed" component={Completed}/>
+                    <Route path="/orders" component={NewOrders}/>
                 </div>
             </BrowserRouter>
 
@@ -57,4 +35,3 @@ ReactDOM.render(
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
  
-// export default Root;
