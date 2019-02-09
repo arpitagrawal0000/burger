@@ -13,6 +13,8 @@ import Checkout from './screens/checkout';
 import Completed from './screens/completed';
 //import Orders from './screens/orders';
 import NewOrders from './screens/new';
+import Screen from './screens/burger';
+
 
 const store = applyMiddleware(thunk)(createStore)(reducer);
 
@@ -21,6 +23,7 @@ ReactDOM.render(
             <BrowserRouter >
                 <div>
                     <Route exact path="/" component={App} />
+                    <Route path="/homepage" component={Screen} />
                     <Route path="/order" component={Confirm} /> 
                     <Route path="/checkout" component={Checkout}/>
                     <Route path="/completed" component={Completed}/>

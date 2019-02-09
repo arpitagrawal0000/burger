@@ -1,5 +1,10 @@
 
 import * as actionTypes from './actionTypes';
+import { createBrowserHistory } from 'history';
+
+
+export const history = createBrowserHistory();
+
 
 export const add_ingredients = (value, history) => {
     return (dispatch) => {
@@ -77,3 +82,64 @@ export const show_ingredients= ()=> {
             })
 }
 }
+
+// export const authStart = () => {
+//     return {
+//         type: actionTypes.AUTH_START        
+//     };
+// };
+
+
+// export const authSuccess = (authData) => {
+//     return {
+//         type: actionTypes.AUTH_SUCCESS,
+//         authData: authData
+//     };
+// };
+
+// export const authFail = (error) => {
+// return {
+//     type: actionTypes.AUTH_FAIL,
+//     error: error
+//     };
+// };
+
+export const auth = (values) => {
+    return dispatch => {
+        fetch("http://18.223.218.199:8080/api/v1.0/users/login/ ",  {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                    "Accept": 'application/json'
+            },
+            body: JSON.stringify(values)
+        })
+        .then(response =>response.json())
+        .then(response => {
+            if (response.status===400) {
+                console.log("error", response);
+                alert(response);
+            } else {
+                console.log( "api successful", response);
+                dispatch({
+                    type: actionTypes.AUTH_SUCCESS,
+                    payload: response,
+                })
+                localStorage.setItem("token", response.token);
+                console.log(localStorage.getItem('token'));
+
+
+                //dispatch(authStoreToken(response.token))
+                 window.location.href = "/homepage";
+                 //history.push('/homepage');
+                }
+ 
+            })  
+            .catch(err => {
+                console.log('error', err)
+                alert("Authentication failed");
+            })
+    };
+};
+
+

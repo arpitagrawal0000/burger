@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+ import Auth from '../src/screens/login';
 
-import Screen  from '../src/screens/burger'
 
 class App extends Component {
   render() {
     return (
       <div>
-       <Screen history={this.props.history}/>
+       <Auth history={this.props.history}/>
       </div>
     );
   }
